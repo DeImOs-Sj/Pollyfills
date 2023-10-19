@@ -1,21 +1,22 @@
-const array = ["javascript", "node", "react", "express"]
+const array = [10,20,30,40]
 
 
+Array.prototype.map = null
 
-Array.prototype.forEach = null
+if (!Array.prototype.map) {
 
-if (!Array.prototype.forEach)
-{
-    Array.prototype.forEach = function (callback) {
+    Array.prototype.map =function (callBack){
+        let newarray = [];
+
+        for (let i = 0; i < this.length; i++) {
+            newarray.push(callBack(this[i]));
         
-   
-
-    for (let i = 0; i < this.length; i++){
-        callback(this[i])
+        }
+        return newarray;
     }
-    }
+}
+let a = array.map((value) => {
+    return value + 1;
+})
 
-    }
-
-array.forEach((callback) =>
-console.log(callback))
+console.log(a)
